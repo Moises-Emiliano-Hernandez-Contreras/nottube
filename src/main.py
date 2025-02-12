@@ -1,6 +1,6 @@
 from googleapiclient.discovery import build
 import json
-# Cargar configuración desde config.json
+import correo
 with open("config/config.json", "r") as config_file:
     config = json.load(config_file)
 
@@ -12,10 +12,6 @@ request = youtube.channels().list(
     id=YOUTUBE_CHANNEL_ID
 )
 response = request.execute()
-"""for item in response['items']:
-    print("Nombre del canal:", item['snippet']['title'])
-    print("Descripción:", item['snippet']['description'])"""
-
-"""print(response)"""
 print(response["items"][0]['snippet']["title"])
 print(response["items"][0]['snippet']["description"])
+print(correo.email)
